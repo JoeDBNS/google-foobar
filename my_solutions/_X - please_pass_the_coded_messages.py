@@ -33,8 +33,44 @@ Output:
 '''
 
 
-def answer1(l):
-    return l
+# Notes:
+#   Some numbers may just not be used, as in second example.
+#   
+#   
+#   
+#   
+#   
+#   
+#   
 
 
-print(answer1())
+def answer1_SwapListItemPositions(num_list, swap_pos):
+    pos_1 = num_list[swap_pos - 1]
+    pos_2 = num_list[swap_pos]
+
+    num_list[swap_pos - 1] = pos_2
+    num_list[swap_pos] = pos_1
+
+    return num_list
+
+
+def answer1_BuildNumberFromList(num_list):
+    number = ''
+    for num_val in num_list:
+        number += str(num_val)
+    return int(number)
+
+
+def answer1(L):
+    cur_pos = len(L) - 1
+    L.sort(reverse=True)
+
+    while answer1_BuildNumberFromList(L) % 3 != 0:
+        answer1_SwapListItemPositions(L, cur_pos)
+        cur_pos -= 1
+
+    return L
+
+
+print(answer1([3, 1, 4, 1])) # 4311
+print(answer1([3, 1, 4, 1, 5, 9])) # 94311
