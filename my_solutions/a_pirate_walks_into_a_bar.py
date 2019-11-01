@@ -32,7 +32,17 @@ The number of pirates will be at least 2 and no more than 5000.
 
 
 def answer1(numbers):
-  return numbers
+  seen = []
+  current = 0
+
+  while current not in seen:
+    seen.append(current)
+    current = numbers[current]
+  
+  return len(seen) - seen.index(current)
 
 
-print(answer1())
+print(answer1([1, 3, 0, 1])) # 2
+print(answer1([0, 0])) # 1
+print(answer1([1, 2, 3, 4, 5, 6, 0])) # 7
+print(answer1([1, 5, 3, 4, 2, 6, 0])) # 4
