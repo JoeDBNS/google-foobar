@@ -1,0 +1,7 @@
+This invitation appeared on the Google Search page after I had searched: 'one-time pad cipher python'.
+
+I received this invitation during my first CS college course which was 'Intro to Programming'. Here we learned basic programming/logic concepts using Python.
+
+At this point, I was in way over my head and was unable to solve the first challenge. My time limit had run out and my invitation had expired.
+
+There was not a lot of documentation on Google Foobar at the time, so I did not realize what all I had missed out on.

@@ -1,0 +1,29 @@
+This invitation appeared while I was browsing the Google Maps JavaScript API documentation for a work project.
+
+I found this invitation while in my final term for completing an Associate Degree in CS. I was very busy, so progress was slow and I took time in between requesting each challenge to ensure I was able to dedicate the next 48 hours specifically to solving the next puzzle.
+
+Over about 2.5 months I had successfully made it through 5 challenges.
+
+A few days after I had completed challenge 5, I was preparing my schedule to begin the next challenge. Let's say it was a Friday that I was going to make the next request. On the Thursday before, I checked the Foobar website to make sure everything was ready and available, and it was looking good. Then the next day when I visited the website and found that the Google Foobar project had gone down for 'Extended Maintenance'.
+
+I was very disappointed as there was no documentation on the page or that I could find elsewhere that explained this notice. I was worried the project had been shut down for good. This was especially disappointing as I was one challenge away from being able to submit my LinkedIn and contact information.
+
+I reached out to google-foobar-help over email for an ETA or additional info, but I did not receive a response.
+
+At this time, I was hopeful that the site may come back up eventually, so I put together a small Python script that would hit their site and check for the maintenance notification text. If it found it, I knew the site was still down, and if it didn't find it, I would get a notification.
+
+I left this script running every day for about 5 months until I finally received a notification that the site was back up!
+
+I immediately went to the site and tried to log in, however, my login credentials no longer worked. I reached out to google-foobar-help again over email and this time I did receive a quick response.
+
+I spent the next few days going back and forth with a Program Manager at Google trying to find out what had happened to my account and progress. Ultimately, I was able to get back into my foobar account, but I had lost all progress.
+
+We verified that my account had not been deleted, and that I had not failed any challenges, but initially we didn't see why the progress had been lost.
+
+In working with their engineering team, she was able to find out why my progress was ultimately lost and unrecoverable, and it had to do with Google Foobar's challenge release cycles.
+
+Because I had received my first invitation back in 2016, my account was then associated with whatever set of challenges were available at that time. This persisted throughout my second attempt here in 2018. This was fine, up until November when Google Foobar initiated a new challenge release cycle and discontinued support for the challenge set that I was associated with.
+
+Because my available challenges had been discontinued, so had my progress on those challenges.
+
+I was sad, but thankful to the team for allowing me to at least keep my account, even though it meant that I'd need to start from the very beginning again.
