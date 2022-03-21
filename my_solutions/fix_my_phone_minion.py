@@ -42,7 +42,7 @@ x and y will be digits from 0 to 9. z will be between 1 and 100, inclusive.
 '''
 
 
-optionsDict = {
+options_dict = {
     1: [ 6, 8 ],
     2: [ 7, 9 ],
     3: [ 8, 4 ],
@@ -55,7 +55,7 @@ optionsDict = {
     0: [ 4, 6 ]
 }
 
-optionsDictStr = {
+options_dict_string = {
     '1': [ '6', '8' ],
     '2': [ '7', '9' ],
     '3': [ '8', '4' ],
@@ -75,7 +75,7 @@ def answer1(start, end, count):
     paths = [srt]
     
     for path in paths:
-        for option in optionsDictStr[path[-1]]:
+        for option in options_dict_string[path[-1]]:
             paths.append(path + option)
         
         if len(paths[-1]) > count:
@@ -93,7 +93,7 @@ def answer2(start, end, count):
     while len(init[0]) < count:
         nxtInit = []
         for x in init:
-            for y in optionsDictStr[x[-1]]:
+            for y in options_dict_string[x[-1]]:
                 nxtInit.append(x + y)
         
         init = nxtInit
@@ -110,7 +110,7 @@ def answer3(start, end, count):
     while i < count:
         tmpPaths = []
         for path in paths:
-            for val in optionsDictStr[path]:
+            for val in options_dict_string[path]:
                 tmpPaths.append(val)
         
         paths = tmpPaths
@@ -119,22 +119,71 @@ def answer3(start, end, count):
     return len([p for p in paths if p == end])
 
 
-def answer4(start, end, count):
-    pathCount = { 0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0 }
-    pathCount[start] = 1
+def answer4(start_val, end_val, max_count):
+    end_val = str(end_val)
+    attempts = [str(start_val)]
+    working_attempts = []
+    completed_attmepts = []
+    matching_attempts = []
+
+    while len(attempts) > 0:
+        for index, attempt in enumerate(attempts):
+            if len(attempt) == max_count:
+                completed_attmepts.append(attempt)
+                del attempts[index]
+            else:
+                for next_step in options_dict_string[attempt[-1]]:
+                    working_attempts.append(attempt + next_step)
+
+        attempts = working_attempts
+        working_attempts = []
     
+    for attempt in completed_attmepts:
+        if attempt[-1] == end_val:
+            matching_attempts.append(attempt)
+
+    return len(matching_attempts)
+
+
+def answer5(start_val, end_val, max_count):
+    end_val = str(end_val)
+    attempts = [str(start_val)]
+    next_steps = []
+
+    iter_count = -1
+    while iter_count < max_count:
+        for attempt in attempts:
+            for next_step in options_dict_string[attempt]:
+                next_steps.append(next_step)
+        attempts = next_steps
+        next_steps = []
+        iter_count += 1
+
+    return attempts.count(end_val)
+
+
+def answer6(start_val, end_val, max_count):
+    path_count = { 0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0 }
+    path_count[start_val] = 1
+
     i = 1
-    while i < count:
-        tmpPathCount = { 0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0 }
-        for path, cnt in pathCount.items():
-            for val in optionsDict[path]:
-                tmpPathCount[val] += cnt
-        
-        pathCount = tmpPathCount
+    while i < max_count:
+        temp_path_count = { 0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0 }
+        for path, cnt in path_count.items():
+            for val in options_dict[path]:
+                temp_path_count[val] += cnt
+
+        path_count = temp_path_count
         i += 1
-    
-    return pathCount[end]
 
+    print(path_count)
 
-print('fix:', answer4(6, 4, 7))
-print('fix:', answer4(6, 4, 19))
+    return path_count[end_val]
+
+print(answer6(0, 6, 3))
+print(answer6(6, 4, 4))
+print(answer6(1, 2, 4))
+print(answer6(0, 4, 2))
+print(answer6(6, 4, 7))
+print(answer6(2, 4, 98))
+print(answer6(0, 6, 6))
