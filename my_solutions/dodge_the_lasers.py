@@ -52,8 +52,20 @@ Output:
 '''
 
 
+from math import floor, sqrt
+
+
 def answer1(str_n):
-    return str_n
+    str_n = int(str_n)
+    position = 1
+    total = 0
+
+    while position <= str_n:
+        total += floor(position * sqrt(2))
+        position += 1
+
+    return str(total)
 
 
-print(answer1())
+print(answer1("5")) # "19"
+print(answer1("77")) # "4208"
