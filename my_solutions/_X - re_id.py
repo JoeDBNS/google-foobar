@@ -32,7 +32,7 @@ Output:
     (string) "71113"
 '''
 
-concant_prime_mega = (
+temp_concant_prime_mega = (
     '2357111317192329313741434753596167717379838997101103107109113127131137139149'
     '1511571631671731791811911931971992112232272292332392412512572632692712772812'
     '8329330731131331733133734734935335936737337938338939740140941942143143343944'
@@ -167,24 +167,31 @@ concant_prime_mega = (
     '12920143201472014920161201732017720183202012021920231'
 )
 
-
 def answer1(n):
-    return concant_prime_mega[n:n+5]
+    return temp_concant_prime_mega[n:n+5]
 
-
-print(answer1(0))
-print(answer1(3))
-
-
-def GenerateMegaPrime():
+def GenerateMegaPrime(max_len):
     new_num = ''
     num = 2;
-    while len(new_num) < 10005:
-        if num > 1:
-            for i in range(2,num):
-                if (num % i) == 0:
-                    break
-                else:
-                    new_num += str(num)
+    # for num in range(2, max_len + 1):
+    while len(new_num) != max_len:
+        for i in range(2, num):
+            if (num % i) == 0:
+                break
+            else:
+                new_num += str(num)
         num += 1
     return new_num
+
+def answer2(n):
+    concant_prime_mega = GenerateMegaPrime(n + 5)
+    return concant_prime_mega[n:n+5]
+    # concant_prime_mega = GenerateMegaPrime(10005)
+    # return temp_concant_prime_mega[n:n+5]
+
+
+# print(answer1(0)) #23571
+print(answer2(0))
+
+# print(answer1(3)) #71113
+print(answer2(3))
