@@ -72,5 +72,61 @@ def answer1(L):
     return L
 
 
-print(answer1([3, 1, 4, 1])) # 4311
-print(answer1([3, 1, 4, 1, 5, 9])) # 94311
+
+def answer2(L):
+    L.sort()
+
+    number_needed = sum(L) % 3
+
+    L_remainder_map = []
+
+    if number_needed != 0:
+        L_remainder_map = answer2_GetRemainderMap(L)
+
+        if number_needed == 2:
+            number_to_pull = 0
+
+            if (L_remainder_map.count(2) > 0) or (L_remainder_map.count(1) > 1):
+                number_to_pull = answer2_PullOneOrTwo(L_remainder_map)
+
+            if number_to_pull == 2:
+                L.remove(2)
+
+            if number_to_pull == 1:
+                L.remove(1)
+                L.remove(1)
+            
+            # TEMPORARY
+            if number_to_pull == 0:
+                print('ERROR')
+
+        elif number_needed == 1:
+            L.remove(1)
+    
+    print(L_remainder_map)
+
+    return int(''.join(map(str, L[::-1])))
+
+def answer2_GetRemainderMap(L):
+    temp_remainder_map = []
+    for number in L:
+        temp_remainder_map.append(number % 3)
+    return temp_remainder_map
+
+def answer2_PullOneOrTwo(L_remainder_map):
+    position_of_2 = L_remainder_map.index(2)
+    position_of_1_1 = L_remainder_map.index(2)
+    position_of_1_2 = L_remainder_map[position_of_1_1:len(L_remainder_map)].index(2)
+
+    if position_of_2 < position_of_1_2:
+        return 2
+    else:
+        return 1
+
+
+
+
+print(answer2([3, 1, 4, 1])) # 4311
+print(answer2([3, 1, 4, 1, 1])) # 4311
+print(answer2([3, 1, 4, 1, 9])) # 94311
+print(answer2([3, 1, 4, 1, 5, 9])) # 9543
