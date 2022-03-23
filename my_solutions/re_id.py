@@ -32,6 +32,9 @@ Output:
     (string) "71113"
 '''
 
+from turtle import Turtle
+
+
 temp_concant_prime_mega = (
     '2357111317192329313741434753596167717379838997101103107109113127131137139149'
     '1511571631671731791811911931971992112232272292332392412512572632692712772812'
@@ -170,11 +173,9 @@ temp_concant_prime_mega = (
 def answer1(n):
     return temp_concant_prime_mega[n:n+5]
 
-def GenerateMegaPrime(max_len):
+def GenerateMegaPrime1(max_len):
     new_num = ''
-    num = 2;
-    # for num in range(2, max_len + 1):
-    while len(new_num) != max_len:
+    for num in range(2, max_len + 1):
         for i in range(2, num):
             if (num % i) == 0:
                 break
@@ -183,15 +184,41 @@ def GenerateMegaPrime(max_len):
         num += 1
     return new_num
 
+def GenerateMegaPrime2(max_len):
+    new_num = '2'
+    num = 3
+    while len(new_num) <= max_len:
+        if IsNumberPrime(num):
+            new_num += str(num)
+        num += 1
+    return new_num
+
+def IsNumberPrime(number):
+    found_divide = 0
+
+    for i in range(2, number):
+        if (number % i) == 0:
+            found_divide += 1
+            break
+
+    if found_divide > 0:
+        return False
+    else:
+        return True
+
 def answer2(n):
-    concant_prime_mega = GenerateMegaPrime(n + 5)
+    concant_prime_mega = GenerateMegaPrime2(n + 5)
     return concant_prime_mega[n:n+5]
-    # concant_prime_mega = GenerateMegaPrime(10005)
-    # return temp_concant_prime_mega[n:n+5]
 
 
-# print(answer1(0)) #23571
+print(answer1(0)) #23571
 print(answer2(0))
 
-# print(answer1(3)) #71113
+print(answer1(3)) #71113
 print(answer2(3))
+
+print(answer1(14))
+print(answer2(14))
+
+print(answer1(9864))
+print(answer2(9864))
