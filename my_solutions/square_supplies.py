@@ -25,8 +25,33 @@ n will be an integer, satisfying 1 <= n <= 10000.
 '''
 
 
+# Notes:
+#   
+#   
+#   
+#   
+#   
+#   
+#   
+#   
+
+
+from math import floor, sqrt
+
+
 def answer1(n):
-  return n
+  n_rem = n
+  num_of_pads = 0
 
+  while n_rem > 3:
+    n_sqrt = sqrt(n_rem)
+    n_floor = floor(n_sqrt)
 
-print(answer1())
+    num_of_pads += 1
+    n_rem = n_rem - (n_floor * n_floor)
+
+  return num_of_pads
+
+print(answer1(15))
+print(answer1(16))
+print(answer1(99001))
