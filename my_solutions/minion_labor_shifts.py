@@ -1,5 +1,5 @@
 '''
-Minion Labor Shifts
+Minion Labor Shifts / Minion Task Scheduling
 ==========
 
 Commander Lambda's minions are upset! They're given the worst jobs on the whole space station,
